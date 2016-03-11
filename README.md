@@ -6,6 +6,7 @@
 ## Install
 
 pip install bs4
+
 git clone https://github.com/kangzj/HouseRentSearch.git
 
 ## Run
