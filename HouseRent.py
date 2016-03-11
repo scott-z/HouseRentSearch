@@ -17,6 +17,10 @@ sys.setdefaultencoding('utf-8')
 PAGE_NUM = 5
 DOWNLOAD_PERIOD = 907
 
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s\t%(filename)s:%(lineno)d\t%(funcName)s\t%(levelname)s\t%(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+
 
 # proxy = urllib2.ProxyHandler({'http': 'web-proxy.oa.com:8080', 'https': 'web-proxy.oa.com:8080'})
 # opener = urllib2.build_opener(proxy)
@@ -118,7 +122,7 @@ def download_and_parse():
     for i in range(PAGE_NUM):
         try:
             url = "http://www.newsmth.net/nForum/board/HouseRent?ajax&p=%d" % (i + 1)
-            print url
+            logging.info(url)
             f = urllib2.urlopen(url, timeout=20)
             if f.getcode() != 200:
                 continue
@@ -131,11 +135,11 @@ def download_and_parse():
                     a = tds[i].find('a')
                     a_tags.append(('【水木】' + a.text, 'http://www.newsmth.net' + a.attrs['href'], tds_t[i].text))
         except Exception, e:
-            print e.message
+            logging.error(e.message)
     for i in range(PAGE_NUM):
         try:
             url = "https://www.douban.com/group/beijingzufang/discussion?start=%d" % (i * 25)
-            print url
+            logging.info(url)
             f = urllib2.urlopen(url, timeout=20)
             if f.getcode() != 200:
                 continue
@@ -148,7 +152,7 @@ def download_and_parse():
                     a = tds[i].find('a')
                     a_tags.append(('【豆瓣】' + a.attrs['title'], a.attrs['href'], tds_t[i].text))
         except Exception, e:
-            print e.message
+            logging.error(e.message)
         with open('cache.json', 'w') as f:
             f.write(json.dumps(a_tags))
 
