@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>关注的租房</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://images.newsmth.net/nForum/favicon.ico">
+    <style>
+        div {
+            /*width: 800px;*/
+        }
+
+        h2 {
+            font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li:last-child {
+            border: none;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            /*width: 800px;*/
+        }
+
+        li a:hover {
+            background: #f6f6f6;
+        }
+
+        input[type="text"] {
+            display: inline;
+            width: 100%;
+            min-height: 20px;        // Make inputs at least the height of their button counterpart
+            .box-sizing(border-box); // Makes inputs behave like true block-level elements
+        }
+    </style>
+</head>
+
+<body>
+<h2>水木租房搜索</h2>
+<p>关键词以<b>空格</b>分隔，各关键词是<b>或</b>的关系，搜索后可直接收藏URL，随时查看（默认条件为9号线、10号线）</p>
+<form action="">
+    <input type="text" name="ins"> <input type="submit" value="搜索">
+</form>
+<p/>
+<ul>
+    {content}
+</ul>
+</body>
+</html>
