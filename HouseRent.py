@@ -117,7 +117,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 def download_and_parse():
     a_tags = []
-    for i in range(PAGE_NUM):
+    for i in range(DOUBAN_PAGE_NUM):
         try:
             url = "http://www.newsmth.net/nForum/board/HouseRent?ajax&p=%d" % (i + 1)
             logging.info(url)
