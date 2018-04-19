@@ -15,6 +15,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 PAGE_NUM = 5
+DOUBAN_PAGE_NUM = 20
 DOWNLOAD_PERIOD = 907
 
 logging.basicConfig(level=logging.DEBUG,
@@ -30,12 +31,9 @@ logging.basicConfig(level=logging.DEBUG,
 def get_tags(ins=None, not_ins=None):
     if not ins or (len(ins) == 1 and not ins[0]):
         ins = [
-            u'10号线', u'9号线',
-            u'知春路', u'知春里', u'罗庄', u'巴沟', u'火器营', u'长春桥', u'车道沟',
-            u'慈寿寺', u'西钓鱼台', u'公主坟', u'莲花桥', u'六里桥',
-            u'白石桥南', u'国家图书馆', u'郭公庄', u'大葆台', u'六里桥东', u'七里庄'
+            [u'六号线',u'6号线',u'呼家楼',u'金台路',u'十里堡',u'青年路',u'褡裢坡',u'黄渠',u'朝阳门',u'两居']
         ]
-    not_ins = [u'求租', u'已租']
+    not_ins = [u'公告',u'合租',u'三居',u'北三环',u'中介',u'天通苑',u'清华',u'海淀',u'上地',u'清河',u'望京',u'来广营',u'一居',u'一室一厅',u'求租']
 
     a_tags = json.load(open('./cache.json'))
 
