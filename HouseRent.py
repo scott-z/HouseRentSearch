@@ -14,7 +14,7 @@ import bs4
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-PAGE_NUM = 5
+PAGE_NUM = 10
 DOUBAN_PAGE_NUM = 20
 DOWNLOAD_PERIOD = 907
 
@@ -117,7 +117,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 def download_and_parse():
     a_tags = []
-    for i in range(DOUBAN_PAGE_NUM):
+    for i in range(PAGE_NUM):
         try:
             url = "http://www.newsmth.net/nForum/board/HouseRent?ajax&p=%d" % (i + 1)
             logging.info(url)
@@ -134,7 +134,7 @@ def download_and_parse():
                     a_tags.append(('【水木】' + a.text, 'http://www.newsmth.net' + a.attrs['href'], tds_t[i].text))
         except Exception, e:
             logging.error(e.message)
-    for i in range(PAGE_NUM):
+    for i in range(DOUBAN_PAGE_NUM):
         try:
             url = "https://www.douban.com/group/beijingzufang/discussion?start=%d" % (i * 25)
             logging.info(url)
